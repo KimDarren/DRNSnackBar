@@ -13,6 +13,10 @@
 		9528DE9A1BF5BD3D007B3644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9528DE941BF5BD3D007B3644 /* LaunchScreen.storyboard */; };
 		9528DE9B1BF5BD3D007B3644 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9528DE961BF5BD3D007B3644 /* Info.plist */; };
 		9528DE9C1BF5BD3D007B3644 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9528DE971BF5BD3D007B3644 /* main.m */; };
+		9528DEA41BF5C183007B3644 /* DRNSnackBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9528DEA31BF5C183007B3644 /* DRNSnackBar.m */; };
+		9528DEA71BF5C220007B3644 /* DRNSnackBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9528DEA61BF5C220007B3644 /* DRNSnackBarManager.m */; };
+		9528DEAA1BF5C269007B3644 /* DRNSnackBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9528DEA91BF5C269007B3644 /* DRNSnackBarView.m */; };
+		95FF1E841BF9B82300966BBA /* DRNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FF1E831BF9B82300966BBA /* DRNViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,14 @@
 		9528DE951BF5BD3D007B3644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9528DE961BF5BD3D007B3644 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9528DE971BF5BD3D007B3644 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9528DEA21BF5C183007B3644 /* DRNSnackBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNSnackBar.h; sourceTree = "<group>"; };
+		9528DEA31BF5C183007B3644 /* DRNSnackBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNSnackBar.m; sourceTree = "<group>"; };
+		9528DEA51BF5C220007B3644 /* DRNSnackBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNSnackBarManager.h; sourceTree = "<group>"; };
+		9528DEA61BF5C220007B3644 /* DRNSnackBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNSnackBarManager.m; sourceTree = "<group>"; };
+		9528DEA81BF5C269007B3644 /* DRNSnackBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNSnackBarView.h; sourceTree = "<group>"; };
+		9528DEA91BF5C269007B3644 /* DRNSnackBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNSnackBarView.m; sourceTree = "<group>"; };
+		95FF1E821BF9B82300966BBA /* DRNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNViewController.h; sourceTree = "<group>"; };
+		95FF1E831BF9B82300966BBA /* DRNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,7 @@
 			children = (
 				9528DE8F1BF5BD3D007B3644 /* app delegate */,
 				9528DE921BF5BD3D007B3644 /* supporting files */,
+				95FF1E811BF9B81700966BBA /* view controller */,
 			);
 			path = DRNSnackBarDemo;
 			sourceTree = "<group>";
@@ -108,9 +121,24 @@
 		9528DEA11BF5C002007B3644 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9528DEA21BF5C183007B3644 /* DRNSnackBar.h */,
+				9528DEA31BF5C183007B3644 /* DRNSnackBar.m */,
+				9528DEA51BF5C220007B3644 /* DRNSnackBarManager.h */,
+				9528DEA61BF5C220007B3644 /* DRNSnackBarManager.m */,
+				9528DEA81BF5C269007B3644 /* DRNSnackBarView.h */,
+				9528DEA91BF5C269007B3644 /* DRNSnackBarView.m */,
 			);
 			name = Classes;
 			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		95FF1E811BF9B81700966BBA /* view controller */ = {
+			isa = PBXGroup;
+			children = (
+				95FF1E821BF9B82300966BBA /* DRNViewController.h */,
+				95FF1E831BF9B82300966BBA /* DRNViewController.m */,
+			);
+			path = "view controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +247,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9528DE9C1BF5BD3D007B3644 /* main.m in Sources */,
+				95FF1E841BF9B82300966BBA /* DRNViewController.m in Sources */,
 				9528DE981BF5BD3D007B3644 /* AppDelegate.m in Sources */,
+				9528DEA41BF5C183007B3644 /* DRNSnackBar.m in Sources */,
+				9528DEA71BF5C220007B3644 /* DRNSnackBarManager.m in Sources */,
+				9528DEAA1BF5C269007B3644 /* DRNSnackBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
