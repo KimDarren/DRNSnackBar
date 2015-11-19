@@ -54,10 +54,13 @@
     CGFloat screenWidth = CGRectGetWidth(screenBounds);
     CGFloat screenHeight = CGRectGetHeight(screenBounds);
     
-    CGSize fitSize = CGSizeMake(screenWidth - 19.0f * 2.0f,
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        screenWidth = 414.0f;
+    }
+    
+    CGSize maxSize = CGSizeMake(screenWidth - 19.0f * 2.0f,
                                 CGFLOAT_MAX);
-    CGSize labelSize = [_messageLabel sizeThatFits:fitSize];
-    NSLog(@"%@", NSStringFromCGSize(labelSize));
+    CGSize labelSize = [_messageLabel sizeThatFits:maxSize];
     
     _messageLabel.frame = CGRectMake(19.0f,
                                      19.0f,
@@ -65,7 +68,8 @@
                                      labelSize.height);
     CGFloat fitHeight = labelSize.height + 19.0f*2.0f;
     
-    self.frame = CGRectMake(0,
+    CGFloat x = (CGRectGetWidth(screenBounds) - screenWidth) / 2.0f;
+    self.frame = CGRectMake(x,
                             screenHeight - fitHeight,
                             screenWidth,
                             fitHeight);
