@@ -59,7 +59,9 @@
 
 - (void)deviceOrientaionDidChange:(NSNotification *)notificatoin
 {
-    
+    if (_queue.operationCount) {
+        [[_queue.operations[0] view] layoutSubviews];
+    }
 }
 
 @end
