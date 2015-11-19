@@ -27,10 +27,14 @@
 {
     self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor darkGrayColor];
+        self.backgroundColor = [UIColor colorWithRed:50.0f/255.0f
+                                               green:50.0f/255.0f
+                                                blue:50/255.0f
+                                               alpha:1.0f];
         
         _messageLabel = [[UILabel alloc] init];
         _messageLabel.textColor = [UIColor whiteColor];
+        _messageLabel.numberOfLines = 0;
         
         _dismissButton = [[UIButton alloc] init];
         [_dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
@@ -47,8 +51,29 @@
     [super layoutSubviews];
     
     CGRect screenBounds = [UIScreen mainScreen].bounds;
-    self.frame = CGRectMake(0, CGRectGetHeight(screenBounds) - 100.0f, CGRectGetWidth(screenBounds), 100.0f);
-    _messageLabel.frame = self.bounds;
+    CGFloat screenWidth = CGRectGetWidth(screenBounds);
+    CGFloat screenHeight = CGRectGetHeight(screenBounds);
+    
+    CGSize fitSize = CGSizeMake(screenWidth - 19.0f * 2.0f,
+                                CGFLOAT_MAX);
+    CGSize labelSize = [_messageLabel sizeThatFits:fitSize];
+    NSLog(@"%@", NSStringFromCGSize(labelSize));
+    
+    _messageLabel.frame = CGRectMake(19.0f,
+                                     19.0f,
+                                     labelSize.width,
+                                     labelSize.height);
+    CGFloat fitHeight = labelSize.height + 19.0f*2.0f;
+    
+    self.frame = CGRectMake(0,
+                            screenHeight - fitHeight,
+                            screenWidth,
+                            fitHeight);
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
 }
 
 @end
