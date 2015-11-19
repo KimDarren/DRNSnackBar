@@ -20,6 +20,9 @@
 
 static const CGFloat DRNSnackBarShortDelay = 2.0f;
 
+static NSString * const DRNSnackBarExcutingKey = @"isExecuting";
+static NSString * const DRNSnackBarFinishedKey = @"isFinished";
+
 @implementation DRNSnackBar
 
 - (instancetype)init
@@ -76,8 +79,7 @@ static const CGFloat DRNSnackBarShortDelay = 2.0f;
 
 - (void)start
 {
-    if(![NSThread isMainThread])
-    {
+    if(![NSThread isMainThread]) {
         [self performSelectorOnMainThread:@selector(start)
                                withObject:nil
                             waitUntilDone:NO];
@@ -88,26 +90,31 @@ static const CGFloat DRNSnackBarShortDelay = 2.0f;
 
 - (void)main
 {
-    [self willChangeValueForKey:@"isExecuting"];
+    [self willChangeValueForKey:DRNSnackBarExcutingKey];
     
     _isExecuting = YES;
     
-    [self didChangeValueForKey:@"isExecuting"];
+    [self didChangeValueForKey:DRNSnackBarExcutingKey];
     
-    dispatch_async(dispatch_get_main_queue(), ^{ // Non-main thread cannot modify user interface
+    dispatch_async(dispatch_get_main_queue(), ^{
         [_view layoutSubviews];
         _view.frame = CGRectSetY(_view.frame, [UIScreen mainScreen].bounds.size.height);
         
-        [[[UIApplication sharedApplication] keyWindow] addSubview:_view];
-        [UIView animateWithDuration:0.5 delay:_delay options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            _view.frame = CGRectSetY(_view.frame, [UIScreen mainScreen].bounds.size.height - _view.frame.size.height);
+        // Add snack bar view to key window.
+        UIWindow *keyWindow = [self window];
+        [keyWindow addSubview:_view];
+        
+        [UIView animateWithDuration:0.25 delay:_delay options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            _view.frame = CGRectSetY(_view.frame, [UIScreen mainScreen].bounds.size.height - CGRectGetHeight(_view.frame));
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:_duration animations:^{
                 _view.alpha = 1.0001;
             } completion:^(BOOL finished) {
                 [self finish];
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.25 animations:^{
                     _view.frame = CGRectSetY(_view.frame, [UIScreen mainScreen].bounds.size.height);
+                } completion:^(BOOL finished) {
+                    [_view removeFromSuperview];
                 }];
             }];
         }];
@@ -116,14 +123,14 @@ static const CGFloat DRNSnackBarShortDelay = 2.0f;
 
 - (void)finish
 {
-    [self willChangeValueForKey:@"isExecuting"];
-    [self willChangeValueForKey:@"isFinished"];
+    [self willChangeValueForKey:DRNSnackBarExcutingKey];
+    [self willChangeValueForKey:DRNSnackBarFinishedKey];
     
     _isExecuting = NO;
     _isFinished = YES;
     
-    [self didChangeValueForKey:@"isExecuting"];
-    [self didChangeValueForKey:@"isFinished"];
+    [self didChangeValueForKey:DRNSnackBarExcutingKey];
+    [self didChangeValueForKey:DRNSnackBarFinishedKey];
 }
 
 - (BOOL)isExecuting
@@ -134,6 +141,16 @@ static const CGFloat DRNSnackBarShortDelay = 2.0f;
 - (BOOL)isFinished
 {
     return _isFinished;
+}
+
+- (UIWindow *)window
+{
+    for (UIWindow *window in [UIApplication sharedApplication].windows) {
+        if ([NSStringFromClass([window class]) isEqualToString:@"UITextEffectsWindow"]) {
+            return window;
+        }
+    }
+    return [UIApplication sharedApplication].keyWindow;
 }
 
 @end
