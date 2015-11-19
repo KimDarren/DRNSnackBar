@@ -53,11 +53,14 @@
     CGRect screenBounds = [UIScreen mainScreen].bounds;
     CGFloat screenWidth = CGRectGetWidth(screenBounds);
     CGFloat screenHeight = CGRectGetHeight(screenBounds);
+    CGFloat fontSize = 16.0f;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         screenWidth = 414.0f;
+        fontSize = 19.0f;
     }
     
+    _messageLabel.font = [UIFont systemFontOfSize:fontSize];
     CGSize maxSize = CGSizeMake(screenWidth - 19.0f * 2.0f,
                                 CGFLOAT_MAX);
     CGSize labelSize = [_messageLabel sizeThatFits:maxSize];
