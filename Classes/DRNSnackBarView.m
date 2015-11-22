@@ -14,9 +14,6 @@
 
 #import "DRNSnackBarView.h"
 
-// Library
-#import <Masonry/Masonry.h>
-
 @interface DRNSnackBarView ()
 
 @end
