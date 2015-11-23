@@ -1,5 +1,6 @@
 DRNSnackBar
 ======================
+![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DRNSnackBar/badge.png)
 
 Material-style snack bar for iOS.
 
@@ -11,10 +12,15 @@ Screenshots
 `DRNSnackBar` supports not only iPhone but also iPad.
 
 * iPad landscape
+
 ![iPadLandscape](http://koreandarren.com/snackbar/ipadLandscape.png)
+
 * iPad portrait
+
 ![iPadPortrait](http://koreandarren.com/snackbar/ipadPortrait.png)
+
 * iPhone
+
 ![iPhonePortrait](http://koreandarren.com/snackbar/iphone.png)
 
 Usage
