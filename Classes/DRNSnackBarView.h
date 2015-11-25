@@ -17,6 +17,6 @@
 @interface DRNSnackBarView : UIView
 
 @property (strong, nonatomic) UILabel *messageLabel;
-@property (strong, nonatomic) UIButton *dismissButton;
+@property (strong, nonatomic) UIButton *actionButton;
 
 @end

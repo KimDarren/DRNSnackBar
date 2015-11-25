@@ -33,12 +33,12 @@
         _messageLabel.textColor = [UIColor whiteColor];
         _messageLabel.numberOfLines = 0;
         
-        _dismissButton = [[UIButton alloc] init];
-        [_dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
-        [_dismissButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        _actionButton = [[UIButton alloc] init];
+        [_actionButton setTitle:@"Dismiss" forState:UIControlStateNormal];
+        [_actionButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         
         [self addSubview:_messageLabel];
-        [self addSubview:_dismissButton];
+        [self addSubview:_actionButton];
     }
     return self;
 }
