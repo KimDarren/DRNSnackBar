@@ -14,7 +14,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DRNSnackBarAction.h"
+
 @class DRNSnackBarView;
+@class DRNSnackBarAction;
 
 @interface DRNSnackBar : NSOperation
 {
@@ -25,6 +28,7 @@
 @property (copy) void (^buttonHandler)(void);
 
 @property (strong, nonatomic) DRNSnackBarView *view;
+@property (nonatomic) DRNSnackBarAction *action;
 
 @property (weak, nonatomic) NSString *text;
 @property (nonatomic) NSTimeInterval delay;

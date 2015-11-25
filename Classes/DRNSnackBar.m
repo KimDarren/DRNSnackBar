@@ -15,6 +15,7 @@
 #import "DRNSnackBar.h"
 #import "DRNSnackBarView.h"
 #import "DRNSnackBarManager.h"
+#import "DRNSnackBarAction.h"
 
 #define CGRectSetY(rect, y) CGRectMake(rect.origin.x, y, rect.size.width, rect.size.height)
 
@@ -65,9 +66,22 @@ static NSString * const DRNSnackBarFinishedKey = @"isFinished";
 {
     _view.messageLabel.text = text;
 }
+
+- (void)setAction:(DRNSnackBarAction *)action
+{
+    _view.action = action;
+}
+
+#pragma mark - Getter
+
 - (NSString *)text
 {
     return _view.messageLabel.text;
+}
+
+- (DRNSnackBarAction *)action
+{
+    return _view.action;
 }
 
 #pragma mark - NSOperation Overriding
