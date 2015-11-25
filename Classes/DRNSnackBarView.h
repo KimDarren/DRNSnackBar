@@ -14,9 +14,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class DRNSnackBarAction;
+
 @interface DRNSnackBarView : UIView
 
 @property (strong, nonatomic) UILabel *messageLabel;
-@property (strong, nonatomic) UIButton *actionButton;
+@property (strong, nonatomic, readonly) UIButton *actionButton;
+@property (strong, nonatomic) DRNSnackBarAction *action;
 
 @end
